@@ -1,10 +1,10 @@
-import datetime
+from django.utils.timezone import now
 from django.db import models
 from django.utils.translation import ugettext_lazy as _
 
 class InviteRequest(models.Model):
     email = models.EmailField(_('Email address'), unique=True)
-    created = models.DateTimeField(_('Created'), default=datetime.datetime.now)
+    created = models.DateTimeField(_('Created'), default=now)
     invited = models.BooleanField(_('Invited'), default=False)
 
     def __unicode__(self):
